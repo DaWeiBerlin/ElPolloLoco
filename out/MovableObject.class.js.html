@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: MovableObject.class.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: MovableObject.class.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>class MovableObject extends DrawableObject{
+    speed = 0.15;
+    otherDirection = false;
+    speedY = 0;
+    acceleration = 2.5;
+    energy = 100
+    lastHit = 0;
+
+    constructor(){
+        super()
+    }
+
+    /**
+     * This function applys gravity to a Movable Object
+     */
+    applyGravity(){
+
+        setInterval(() =>{
+            if(this.isAboveGround() || this.speedY > 0){
+                this.y -= this.speedY
+                this.speedY -= this.acceleration 
+            }else{
+                if(world.keyboard.UP){
+                    this.speedY = 25
+                }
+            }
+        }, 1000/25)
+    }
+
+    /**
+     * This function checks if a movable object is above the ground (y = 300)
+     * @returns 
+     */
+    isAboveGround(){
+        if(this instanceof ThrowableObject){
+            return true
+        }else{
+            return this.y &lt;= 300;
+        }
+    }
+
+    /**
+     * This function checks if a MovableObject is colliding from above with another movable object
+     * @param {*} mo - this defines the MovableObject
+     * @returns 
+     */
+    isCollidingAbove(mo) {
+        return  this.x + this.width > mo.x &amp;&amp;               // Right side of `this` is to the right of `mo`'s left side
+                this.x &lt; mo.x + mo.width &amp;&amp;                 // Left side of `this` is to the left of `mo`'s right side
+                this.y + this.height &lt;= mo.y &amp;&amp;             // Bottom of `this` is at or above the top of `mo`
+                this.y + this.height >= mo.y - 5 &amp;&amp;         // Bottom of `this` is within a small tolerance (e.g., 5 pixels) above `mo`
+                this.y &lt; mo.y;                              // Top of `this` is above the top of `mo`
+    }
+    
+    /**
+     * This function checks if a MovableObject is colliding with another movable object
+     * @param {*} mo -This defines the movable Object
+     * @returns 
+     */
+    isColliding(mo) {
+        return  this.x + this.width > mo.x &amp;&amp;              // Right side of `this` is to the right of `mo`'s left side
+                this.x &lt; mo.x + mo.width &amp;&amp;                // Left side of `this` is to the left of `mo`'s right side
+                (
+                    (this.y + this.height > mo.y &amp;&amp;    // Side collisions: `this`'s bottom is not too close to `mo`'s top
+                     this.y &lt; mo.y + mo.height + 50) ||     // Top of `this` is not too close to `mo`'s bottom
+    
+                    (this.y &lt; mo.y + mo.height &amp;&amp;          // Bottom collisions: `this`'s top is below `mo`'s bottom
+                     this.y + this.height > mo.y)          // `this`'s bottom is above `mo`'s top (vertical overlap)
+                );
+    }
+    
+    /**
+     * This function checks if the energy is 0
+     * @returns 
+     */
+    isDead(){
+        return this.energy == 0;
+    }
+    /**
+     * This function changes the energy when the character collides with an enemy
+     */
+    hit(){
+        if(this.energy > 20){
+            this.energy -= 20;
+            this.lastHit = new Date().getTime();
+        }else{
+            this.energy = 0
+        }
+    }
+
+    /**
+     * This function changes the let timepassed value 
+     * @returns
+     */
+    isHurt(){
+        let timepassed = new Date().getTime() - this.lastHit;
+        timepassed = timepassed / 1000;
+        return timepassed &lt; 1;
+    }
+
+    /**
+     * This function changes the x value of the MovableObject
+     */
+    moveRight() {
+        this.x += this.speed;
+    }
+
+    /**
+     * This function changes the x value of the MovableObject
+     */
+    moveLeft() {
+        this.x -= this.speed;
+    }
+
+    /**
+     * This function changes the SpeedY value of the MovableObject
+     */
+    jump() {
+        this.speedY = 25;
+    }
+}</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#deactivateKeyListeners">deactivateKeyListeners</a></li><li><a href="global.html#displayWindowSize">displayWindowSize</a></li><li><a href="global.html#fullscreen">fullscreen</a></li><li><a href="global.html#handleKeyDown">handleKeyDown</a></li><li><a href="global.html#init">init</a></li><li><a href="global.html#keylisteners">keylisteners</a></li><li><a href="global.html#left">left</a></li><li><a href="global.html#leftStop">leftStop</a></li><li><a href="global.html#mute">mute</a></li><li><a href="global.html#restart">restart</a></li><li><a href="global.html#right">right</a></li><li><a href="global.html#rightStop">rightStop</a></li><li><a href="global.html#space">space</a></li><li><a href="global.html#spaceStop">spaceStop</a></li><li><a href="global.html#up">up</a></li><li><a href="global.html#upStop">upStop</a></li><li><a href="global.html#volume2">volume2</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.3</a> on Thu Sep 12 2024 18:05:03 GMT+0200 (Mitteleuropäische Sommerzeit)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

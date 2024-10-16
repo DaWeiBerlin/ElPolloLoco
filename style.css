@@ -1,0 +1,458 @@
+@font-face {
+    font-family: Throne;
+    src: url(assets/fonts/THE\ THRONE.ttf);
+}
+
+body{
+    margin: 0;
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: Throne;
+    background-image: url(assets/img_pollo_locco/49422.jpg);
+    background-position: center;
+    background-size: 100% 102vw;
+    background-repeat: no-repeat;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    height: 100vh;
+    width: 100%;
+    overflow: hidden;
+}
+
+#Intro{
+    position: absolute;
+    top: 0px;
+    left: 0;
+    right: 0;
+    z-index: 5;
+}
+
+#Intro img {
+    width: 720px;
+    height: 480px;
+    border-radius: 20px;
+    box-shadow: 0 0 5px black;
+    z-index: 5;
+}
+
+#Intro button {
+    position: absolute;
+    top: 47px;
+    height: 40px;
+    left: 330px;
+    cursor: pointer;
+    border: none;
+    background-color: #2aa9ce;
+    border-radius: 5px;
+    box-shadow: 0 0 5px black;
+    color: #d4e3e9;
+    font-weight: 600;
+    text-shadow: 0 0 1px black;
+    font-family: 'Throne';
+    font-size: 24px;
+    padding: 9px 16px 9px 16px;
+    z-index: 6;
+}
+
+canvas{
+    position: relative;
+    background-color: white;
+    border-radius: 20px;
+    box-shadow: 0 0 5px black;
+}
+
+h1 {
+    color: #4c4c4c;
+    font-size: 77px;
+    text-shadow: 0 0 3px black;
+    position: relative;
+    bottom: 75px;
+}
+
+#Screen{
+    position: relative;
+    bottom: 80px;
+    height: 480px;
+    width: 720px;
+}
+
+#fullscreen{
+    width: 30px;
+    height: 30px;
+    position: absolute;
+    bottom: 30px;
+    right: 30px;
+    z-index: 3;
+    cursor: pointer;
+}
+
+#background{
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 100vh;
+    z-index: -1;
+}
+
+#frame{
+    position: absolute;
+    top: 0;
+    width: 720px;
+    height: 480px;
+    border-radius: 20px;
+}
+
+#frame2{
+    position: absolute;
+    top: 0;
+    width: 720px;
+    height: 480px;
+    border-radius: 20px;
+}
+
+#restart{
+    position: absolute;
+    bottom: 50px;
+    height: 40px;
+    left: 250px;
+    right: 250px;
+    cursor: pointer;
+    border: none;
+    background-color: #2aa9ce;
+    border-radius: 5px;
+    box-shadow: 0 0 5px black;
+    color: #d4e3e9;
+    font-weight: 600;
+    text-shadow: 0 0 1px black;
+    font-family: 'Throne';
+    font-size: 24px;
+    padding: 9px 16px 9px 16px;
+    z-index: 3;
+}
+.mobileButton img{
+    display: none;
+    width: 30px;
+    height: 30px;
+}
+.Button{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 20px;
+}
+
+.Button img{
+    width: 30px;
+    height: 30px;
+    margin-right: 10px;
+    filter: drop-shadow(0px 0px 4px black);
+}
+
+#buttons{
+    display: flex;
+    justify-content: center;
+}
+
+#Intro{
+    display: flex;
+    justify-content: center;
+}
+
+#A{
+    text-shadow: 0 0 1px black;
+}
+
+#D{
+    text-shadow: 0 0 1px black;
+}
+
+#W{
+    text-shadow: 0 0 1px black;
+}
+
+#Space{
+    text-shadow: 0 0 1px black;
+}
+
+#left {
+    position: absolute;
+    bottom: 19px;
+    left: 20px;
+}
+
+#left img{
+    width: 30px;
+    height: 30px;
+}
+
+#right {
+    position: absolute;
+    bottom: 19px;
+    left: 80px;
+}
+
+#right img{
+    width: 30px;
+    height: 30px;
+}
+
+#up {
+    position: absolute;
+    bottom: 19px;
+    right: 83px;
+}
+
+#up img{
+    width: 30px;
+    height: 30px;
+}
+
+#space {
+    position: absolute;
+    bottom: 10px;
+    right: 20px;
+}
+
+#space img{
+    width: 50px;
+    height: 47px;
+}
+
+#mute{
+    position: absolute;
+    bottom: 80px;
+    right: 30px;
+    width: 30px;
+    height: 30px;
+    z-index: 3;
+    cursor: pointer;
+}
+
+
+
+#vol {
+    z-index: 4;
+    position: absolute;
+    writing-mode: vertical-rl;
+    bottom: 120px;
+    right: 38px;
+    transform: rotate(180deg);
+    -webkit-appearance: none; /* Remove default styling */
+    -moz-appearance: none; /* Remove default styling */
+    appearance: none; /* Remove default styling */
+    background: #ddd; /* Track color */
+    width: 9.5px; /* Slider width */
+    height: 100px; /* Slider height */
+    border-radius: 10px; /* Optional: Round track corners */
+}
+
+/* WebKit browsers */
+#vol::-webkit-slider-thumb {
+    -webkit-appearance: none; /* Remove default thumb styling */
+    background: #333; /* Thumb color */
+    width: 20px; /* Thumb width */
+    height: 20px; /* Thumb height */
+    border-radius: 50%; /* Optional: Round thumb */
+    cursor: pointer; /* Thumb cursor */
+}
+
+#vol::-webkit-slider-runnable-track {
+    background: #ccc; /* Track background color */
+    border-radius: 10px; /* Optional: Round track corners */
+}
+
+/* Firefox */
+#vol::-moz-range-thumb {
+    background: #333; /* Thumb color */
+    width: 10px; /* Thumb width */
+    height: 10px; /* Thumb height */
+    border-radius: 50%; /* Optional: Round thumb */
+    cursor: pointer; /* Thumb cursor */
+}
+
+#vol::-moz-range-track {
+    background: #ccc; /* Track background color */
+    border-radius: 10px; /* Optional: Round track corners */
+}
+
+/* Internet Explorer */
+#vol::-ms-thumb {
+    background: #333; /* Thumb color */
+    width: 10px; /* Thumb width */
+    height: 10px; /* Thumb height */
+    border-radius: 50%; /* Optional: Round thumb */
+    cursor: pointer; /* Thumb cursor */
+}
+
+#vol::-ms-track {
+    background: #ccc; /* Track background color */
+    border-radius: 10px; /* Optional: Round track corners */
+    border: none; /* Remove default track border */
+    color: transparent; /* Remove default track color */
+}
+
+
+@media only screen and (max-width: 720px){
+    #rotate {
+        display: flex;
+        position: absolute;
+        bottom: 50px;
+        font-weight: 600;
+        font-size: 32px;
+        text-shadow: 0 0 0px black;
+    }
+    canvas{
+        width: 100%;
+    }
+    .mobileButton img{
+        display: flex;
+        width: 50px;
+        height: 5%;
+        cursor: pointer;
+    }
+    .Button{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    #Screen{
+        width: 100%;
+        bottom: 63px !important;
+    }
+
+    #frame{
+        width: 100%;
+        height: 100%;
+    }
+    
+    #frame2{
+        width: 100%;
+        height: 100%;
+    }
+
+    h1{
+        font-size: 50px;
+    }
+
+    #fullscreen{
+        display: none;
+    }
+}
+
+@media only screen and (max-height: 480px){
+    canvas{
+        height: 100%;
+    }
+    .mobileButton img{
+        display: flex;
+        width: 50px;
+        height: 50px;
+        cursor: pointer;        
+    }
+    .Button{
+        display: none;
+    }
+
+    #Screen{
+        height: 100%;
+        position: relative;
+        bottom: 44px;
+    }
+
+    #frame{
+        height: 100%;
+        width: 100%;
+    }
+    
+    #frame2{
+        height: 100%;
+        width: 100%;
+    }
+
+    h1{
+        font-size: 50px;
+    }
+    #fullscreen{
+        display: none;
+    }
+}
+
+@media (max-width:680px) {
+    #restart{
+        left: 190px;
+        right: 190px;
+    }
+}
+
+@media (max-width:550px) {
+    #restart{
+        left: 150px;
+        right: 150px;
+    }
+}
+
+@media (max-height:550px) {
+    #rotate{
+        font-size: 32px;
+        bottom: 20px;
+        z-index: -1;
+    }
+}
+
+@media (max-width:470px) {
+    #restart {
+        bottom: 25px;
+        height: 70px;
+        left: 100px;
+        right: 110px;
+    }
+    #right {
+        position: absolute;
+        bottom: 19px;
+        left: 60px;
+    }
+    #up {
+        position: absolute;
+        bottom: 19px;
+        right: 70px;
+    }
+}
+
+@media (max-width:360px) {
+    #restart {
+        bottom: 25px;
+        height: 70px;
+        left: 100px;
+        right: 110px;
+    }
+}
+
+@media (max-width:560px) {
+    #Intro button{
+        top: 30px;
+        left: 204px;
+    }
+}
+
+@media (max-width:450px) {
+    #Intro button{
+        left: 130px;
+    }
+}
+
+@media (orientation: landscape) {
+    #rotate{
+        display: none;
+    }
+}
+  
+  /* Apply styles in portrait orientation */
+@media (orientation: portrait) {
+    #rotate{
+        display: flex;
+    }
+}
